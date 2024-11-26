@@ -1,0 +1,17 @@
+@startuml Diagrama
+
+class Juego
+class PacLady
+class Punto
+class PuntoNormal
+class PuntoEspecial
+class Mapa
+class Fantasma
+class FantasmaNormal
+class FantasmaComestible
+class Puntaje
+
+Juego *-- Puntaje
+
+
+@enduml
