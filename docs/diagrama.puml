@@ -1,17 +1,57 @@
-@startuml Diagrama
+@startuml diagrama
 
 class Juego
-class PacLady
-class Punto
-class PuntoNormal
-class PuntoEspecial
-class Mapa
-class Fantasma
-class FantasmaNormal
-class FantasmaComestible
-class Puntaje
+class Usuario
+class PacLady{
+    +Moverse()
+}
+class Vidas{
+    -Numero Vidas
+    + MostrarImagen(Corazon)
+}
+class Punto{
+    +AumentarPuntaje()
+}
+class PuntoNormal{
+    +Desaparecer()
+    +Reaparecer()
+}
+class PuntoEspecial{
+    +ConvetirFantasma()
+    +Desaparecer()
+    +Aparecer()
+}
+class Mapa{
+    +MostrarImagen(Mapa)
+}
+class Fantasma{
+    +Moverse()
+}
+class FantasmaNormal{
+    +DisminuirVida()
+}
+class FantasmaComestible{
+    +AumentarPuntaje()
+    +CambiarApariencia()
+    +Desaparecer()
+    +Reaparecer()
+}
+class Puntaje{
+    +Aumentar()
+}
 
+Juego *-- Usuario
 Juego *-- Puntaje
-
+Jue0go *-- PacLady
+Juego *-- Punto
+Juego *-- Mapa
+Punto <|-- PuntoNormal 
+Punto <|-- PuntoEspecial
+Juego *-- Fantasma
+Fantsama <|-- FantasmaComestible
+Fantasma <|-- FantasmaNormal
+Usuario o-- PacLady
+PacLady o-- Punto
+PacLady o-- Vidas
 
 @enduml
