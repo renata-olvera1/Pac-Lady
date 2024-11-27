@@ -1,6 +1,7 @@
 @startuml diagrama
 
 class Juego
+class GameWindow
 class Usuario
 class PacLady{
     +Moverse()
