@@ -43,7 +43,7 @@ class Puntaje{
 
 Juego *-- Usuario
 Juego *-- Puntaje
-Jue0go *-- PacLady
+Juego *-- PacLady
 Juego *-- Punto
 Juego *-- Mapa
 Punto <|-- PuntoNormal 
