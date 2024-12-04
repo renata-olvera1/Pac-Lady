@@ -42,6 +42,7 @@ class Puntaje{
 }
 
 Juego *-- Usuario
+Juego *-- GameWindow
 Juego *-- Puntaje
 Juego *-- PacLady
 Juego *-- Punto
@@ -49,7 +50,7 @@ Juego *-- Mapa
 Punto <|-- PuntoNormal 
 Punto <|-- PuntoEspecial
 Juego *-- Fantasma
-Fantsama <|-- FantasmaComestible
+Fantasma <|-- FantasmaComestible
 Fantasma <|-- FantasmaNormal
 Usuario o-- PacLady
 PacLady o-- Punto

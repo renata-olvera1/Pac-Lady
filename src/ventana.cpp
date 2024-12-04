@@ -3,7 +3,7 @@
 int main()
 {
     // Crear una ventana de SFML
-    sf::RenderWindow window(sf::VideoMode(200, 200), "Pac-Lady");
+    sf::RenderWindow window(sf::VideoMode(200, 200), "Pac-Lady ....");
 
     // Crear una forma circular de SFML
     sf::CircleShape shape(100.f);
