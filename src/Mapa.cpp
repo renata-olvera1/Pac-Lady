@@ -12,6 +12,7 @@ int main()
     if (!texture.loadFromFile("assets/images/MapaPacLady.png")) // Ajusta el nombre y ruta de la imagen
     {
         // Manejar el error si no se puede cargar la imagen
+        cout << "Error: No se pudo cargar la imagen." << endl;
         return -1;
     }
 

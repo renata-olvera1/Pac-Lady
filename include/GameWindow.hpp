@@ -1,4 +1,3 @@
-#include <chipmunk.h>
 #include <iostream>
 using namespace std;
 #include <SFML/Graphics.hpp>
