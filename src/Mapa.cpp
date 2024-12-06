@@ -1,25 +1,26 @@
 #include <SFML/Graphics.hpp>
 #include "GameWindow.hpp"
-using namespace std;
 
 int main() {
-    // Crear una ventana con el tamaño de la imagen
-    GameWindow window(1026, 1260, "Mapa Pac-Lady");
-
-    // Cargar la imagen desde un archivo
+    // Crear la ventana
     sf::Texture texture;
     if (!texture.loadFromFile("assets/images/MapaPacLady.png")) {
-        cout << "Error: No se pudo cargar la imagen." << endl;
+        std::cout << "Error: No se pudo cargar la imagen." << std::endl;
         return -1;
     }
 
-    // Crear un sprite y asignarle la textura
-    sf::Sprite sprite(texture);
-
-    // Ajustar el sprite para centrarlo en la ventana
     sf::Vector2u textureSize = texture.getSize();
+    float scaleFactor = .75f; // Escalado al 50%
+
+    GameWindow window(textureSize.x * scaleFactor, textureSize.y * scaleFactor, "MapaPacLady");
+
+    // Crear el sprite y asignarle la textura
+    sf::Sprite sprite(texture);
+    sprite.setScale(scaleFactor, scaleFactor); // Reducir el tamaño de la imagen
+
+    // Centrar el sprite en la ventana
     sprite.setOrigin(textureSize.x / 2, textureSize.y / 2);
-    sprite.setPosition(1026 / 2, 1260 / 2);
+    sprite.setPosition((textureSize.x * scaleFactor) / 2, (textureSize.y * scaleFactor) / 2);
 
     // Bucle principal
     while (window.isOpen()) {
