@@ -59,5 +59,6 @@ Fantasma <|-- FantasmaNormal
 Usuario o-- PacLady
 PacLady o-- Punto
 PacLady o-- Vidas
+Puntaje o-- Punto
 
 @enduml
