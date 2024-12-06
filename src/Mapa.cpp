@@ -1,11 +1,11 @@
 #include <GameWindow.hpp>
 #include <SFML/Graphics.hpp>
-
+using namespace std;
 
 int main()
 {
     // Crear una ventana
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Image");
+    GameWindow window(2000, 1500, "SFML Image");
 
     // Cargar la imagen desde un archivo
     sf::Texture texture;

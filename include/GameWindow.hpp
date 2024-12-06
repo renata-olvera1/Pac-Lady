@@ -1,6 +1,6 @@
-#include <iostream>
-using namespace std;
 #include <SFML/Graphics.hpp>
+#include <string>
+#include <iostream>
 
 class GameWindow {
 public:
@@ -24,8 +24,9 @@ public:
         window.display();
     }
 
-    void draw(sf::Shape& shape) {
-        window.draw(shape);
+    // Método modificado para aceptar cualquier objeto sf::Drawable
+    void draw(const sf::Drawable& drawable) {
+        window.draw(drawable);
     }
 
     bool pollEvent(sf::Event& event) {
