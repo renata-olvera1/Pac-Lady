@@ -37,6 +37,11 @@ public:
         return window.getSize();
     }
 
+    // Método para obtener la referencia a la ventana
+    sf::RenderWindow& getRenderWindow() {
+        return window;
+    }
+
 private:
     sf::RenderWindow window;
 };

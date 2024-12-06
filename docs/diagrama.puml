@@ -1,7 +1,11 @@
 @startuml diagrama
 
 class Juego
-class GameWindow
+class GameWindow{
+    +Abrir()
+    +Cerrar()
+    +AjustarTamaño()
+}
 class Usuario
 class PacLady{
     +Moverse()
