@@ -1,7 +1,4 @@
-#ifndef PUNTO_HPP
-#define PUNTO_HPP
-
-#include <SFML/Graphics.hpp>
+/*#include <SFML/Graphics.hpp>
 
 class Punto {
     public:
@@ -18,6 +15,4 @@ class Punto {
 
     private:
         sf::CircleShape circulo;
-    };
-
-#endif // PUNTO_HPP
+    };*/
