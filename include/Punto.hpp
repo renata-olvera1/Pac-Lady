@@ -1,18 +1,19 @@
-/*#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
+using namespace sf;
 
 class Punto {
     public:
     
-        Punto::Punto(float x, float y, float radio) {
+        Punto(float x, float y, float radio) {
         circulo.setRadius(radio);
-        circulo.setFillColor(sf::Color::White);
+        circulo.setFillColor(Color::White);
         circulo.setPosition(x - radio, y - radio); // Centrar el círculo
     }
 
-    void Punto::dibujar(sf::RenderWindow& ventana) {
+    void dibujar(RenderWindow& ventana) {
         ventana.draw(circulo);
     }
 
     private:
-        sf::CircleShape circulo;
-    };*/
+        CircleShape circulo;
+    };

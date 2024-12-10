@@ -1,10 +1,14 @@
 #include "Mapa.hpp"
 #include "GameWindow.hpp"
-//#include "Punto.hpp"
-#include <PacLady.hpp>
+#include "Punto.hpp"
+#include "PacLady.hpp"
 #include <vector>
 
 int main() {
+
+    int xorigen = 275;
+    int yorigen = 609;
+
     // Crear la ventana
     GameWindow window(1026, 1260, "Juego Pac-Lady");
 
@@ -16,15 +20,14 @@ int main() {
     mapa.centrarEnVentana(window.getSize());
 
     // Crear puntos en diferentes posiciones
-    /*
     vector<Punto> puntos = {
-        Punto(200, 150, 5.0), Punto(300, 150, 5.0), Punto(400, 150, 5.0),
-        Punto(200, 250, 5.0), Punto(300, 250, 5.0), Punto(400, 250, 5.0),
-        Punto(200, 350, 5.0), Punto(300, 350, 5.0), Punto(400, 350, 5.0)
-    };*/
+        Punto(550, 798, 5), Punto(580, 798, 5), Punto(610, 798, 5),
+        Punto(485, 798, 5), Punto(455, 798, 5), Punto(425, 798, 5),
+        Punto(395, 798, 5) //Punto(370, 798, 5) //Punto(500, 798, 5)
+    };
 
     // Crear a PacLady
-    PacLady pacLady("assets/images/Pac-Lady.png", 275, 609); // Cambia la ruta de la imagen
+    PacLady pacLady("assets/images/Pac-Lady.png", xorigen, yorigen); // Cambia la ruta de la imagen
 
     // Bucle principal
     while (window.isOpen()) {
@@ -54,6 +57,11 @@ int main() {
         // Dibujar elementos en la ventana
         window.clear();
         mapa.dibujar(window.getRenderWindow());
+
+        // Dibujar los puntos
+        for (auto &punto : puntos) {
+            punto.dibujar(window.getRenderWindow());
+        }
 
         /*for (auto& punto : puntos) {
             punto.dibujar(window.getRenderWindow());
