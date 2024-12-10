@@ -24,7 +24,7 @@ int main() {
     };*/
 
     // Crear a PacLady
-    PacLady pacLady("assets/images/Pac-Lady.png", 600, 800); // Cambia la ruta de la imagen
+    PacLady pacLady("assets/images/Pac-Lady.png", 275, 609); // Cambia la ruta de la imagen
 
     // Bucle principal
     while (window.isOpen()) {
