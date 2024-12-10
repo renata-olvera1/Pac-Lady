@@ -7,7 +7,7 @@ class PacLady
 {
 public:
     // Constructor
-    PacLady(const string &rutaImagen, float x, float y)
+    PacLady(const string &rutaImagen, float x, float y, float velocidad = .5f) : velocidad(velocidad)
     {
         if (!textura.loadFromFile(rutaImagen))
         {
@@ -16,7 +16,7 @@ public:
         sprite.setTexture(textura);
         sprite.setPosition(x, y);
 
-        sprite.setScale(0.01f, 0.01f); // Escalar la imagen para hacerla más pequeña
+        sprite.setScale(0.03f, 0.03f); // Escalar la imagen para hacerla más pequeña
 
     }
 
@@ -54,4 +54,5 @@ public:
 private:
     Texture textura; // Textura para cargar la imagen
     Sprite sprite;   // Sprite que representa a PacLady
+    float velocidad;
 };

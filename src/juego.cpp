@@ -24,11 +24,12 @@ int main() {
     };*/
 
     // Crear a PacLady
-    PacLady pacLady("assets/images/Pac-Lady.png", 400, 300); // Cambia la ruta de la imagen
+    PacLady pacLady("assets/images/Pac-Lady.png", 600, 800); // Cambia la ruta de la imagen
 
     // Bucle principal
     while (window.isOpen()) {
         // Procesar eventos
+
         Event event;
         while (window.pollEvent(event)) {
             if (event.type == Event::Closed) {
@@ -38,16 +39,16 @@ int main() {
 
         // Control de movimiento con las flechas del teclado
         if (Keyboard::isKeyPressed(Keyboard::Up)) {
-            pacLady.mover(Keyboard::Up, 5.0f);
+            pacLady.mover(Keyboard::Up, .045f);
         }
         if (Keyboard::isKeyPressed(Keyboard::Down)) {
-            pacLady.mover(Keyboard::Down, 5.0f);
+            pacLady.mover(Keyboard::Down, .045f);
         }
         if (Keyboard::isKeyPressed(Keyboard::Left)) {
-            pacLady.mover(Keyboard::Left, 5.0f);
+            pacLady.mover(Keyboard::Left, .045f);
         }
         if (Keyboard::isKeyPressed(Keyboard::Right)) {
-            pacLady.mover(Keyboard::Right, 5.0f);
+            pacLady.mover(Keyboard::Right, .045f);
         }
 
         // Dibujar elementos en la ventana
