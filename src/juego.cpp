@@ -35,10 +35,13 @@ int main() {
         Punto(395, 378, 4), Punto(395, 828, 4), Punto(395, 850, 4),
     };
 
-    //vector<Punto> Linea_C = {
+    // Puntos Linea C
+    vector<Punto> Linea_C = {
+        Punto(425, 748, 4), Punto(455, 748, 4), Punto(485, 748, 4),
+        Punto(485, 773, 4), Punto(440, 713, 4), Punto(440, 683, 4),
+    };
 
-    //};
-
+    // Puntos Linea J
     vector<Punto> Linea_J = {
         Punto(355, 748, 4), Punto(330, 748, 4), Punto(305, 748, 4),
         Punto(305, 773, 4), Punto(305, 795, 4), Punto(330, 795, 4),
@@ -88,9 +91,9 @@ int main() {
             punto.dibujar(window.getRenderWindow());
         }
 
-        /*for (auto &punto : Linea_C) {
+        for (auto &punto : Linea_C) {
             punto.dibujar(window.getRenderWindow());
-        }*/
+        }
 
         for (auto &punto : Linea_J) {
             punto.dibujar(window.getRenderWindow());
