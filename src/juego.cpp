@@ -88,9 +88,9 @@ int main() {
             punto.dibujar(window.getRenderWindow());
         }
 
-        for (auto &punto : Linea_C) {
+        /*for (auto &punto : Linea_C) {
             punto.dibujar(window.getRenderWindow());
-        }
+        }*/
 
         for (auto &punto : Linea_J) {
             punto.dibujar(window.getRenderWindow());
