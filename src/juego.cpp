@@ -41,6 +41,28 @@ int main() {
         Punto(485, 773, 4), Punto(440, 713, 4), Punto(440, 683, 4),
     };
 
+    // Puntos Linea D
+    vector<Punto> Linea_D = {
+        Punto(440, 818, 4), Punto(440, 843, 4), Punto(440, 868, 4),
+        Punto(465, 868, 4), Punto(490, 868, 4), Punto(490, 893, 4)
+    };
+
+    // Puntos Linea E
+    vector<Punto> Linea_E = {
+        Punto(630, 768, 4), Punto(630, 708, 4), Punto(630, 408, 4),
+        Punto(630, 678, 4), Punto(630, 648, 4), Punto(630, 618, 4),
+        Punto(630, 588, 4), Punto(630, 738, 4), Punto(630, 528, 4),
+        Punto(630, 498, 4), Punto(630, 468, 4), Punto(630, 438, 4),
+        Punto(630, 378, 4), Punto(630, 828, 4), Punto(630, 850, 4),
+    };
+
+    // Puntos Linea F
+
+    vector<Punto> Linea_F{
+        Punto(605, 748, 4), Punto(575, 748, 4), Punto(545, 748, 4),
+        Punto(545, 773, 4), Punto(585, 713, 4), Punto(585, 683, 4),
+    };
+
     // Puntos Linea J
     vector<Punto> Linea_J = {
         Punto(355, 748, 4), Punto(330, 748, 4), Punto(305, 748, 4),
@@ -94,6 +116,19 @@ int main() {
         for (auto &punto : Linea_C) {
             punto.dibujar(window.getRenderWindow());
         }
+
+        for (auto &punto : Linea_D) {
+            punto.dibujar(window.getRenderWindow());
+        }
+
+        for (auto &punto : Linea_E) {
+            punto.dibujar(window.getRenderWindow());
+        }
+
+        for (auto &punto : Linea_F) {
+            punto.dibujar(window.getRenderWindow());
+        }
+        
 
         for (auto &punto : Linea_J) {
             punto.dibujar(window.getRenderWindow());
