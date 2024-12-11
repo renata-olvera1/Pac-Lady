@@ -112,9 +112,56 @@ int main() {
 
     // Puntos Linea M
     vector<Punto> Linea_M = {
-        Punto(540, 348, 4), Punto(570, 348, 4), Punto(601, 348, 4),
-        Punto(632, 348, 4), Punto(663, 348, 4), Punto(694, 348, 4),
-        Punto(725, 348, 4)
+        Punto(490, 348, 4), Punto(460, 348, 4), Punto(429, 348, 4),
+        Punto(398, 348, 4), Punto(336, 348, 4), Punto(305, 348, 4)   
+    };
+
+    // Puntos Linea N
+    vector<Punto> Linea_N = {
+        Punto(305, 378, 4), Punto(305, 408, 4), Punto(305, 438, 4),
+        Punto(305, 463, 4), Punto(305, 488, 4), Punto(305, 513, 4),
+        Punto(336, 513, 4), Punto(367, 513, 4), Punto(336, 438, 4),
+        Punto(367, 438, 4)
+    };
+
+    // Puntos Linea Ñ
+    vector<Punto> Linea_NN{
+        Punto(725, 378, 4), Punto(725, 408, 4), Punto(725, 438, 4),
+        Punto(725, 463, 4), Punto(725, 488, 4), Punto(725, 513, 4),
+        Punto(663, 513, 4), Punto(694, 513, 4), Punto(663, 438, 4),
+    };
+
+    // Puntos Linea O
+    vector<Punto> Linea_O = {
+        Punto(540, 378, 4), Punto(540, 408, 4)
+    };
+
+    // Puntos Linea P
+    vector<Punto> Linea_P = {
+        Punto(490, 378, 4), Punto(490, 408, 4)
+    };
+
+    // Puntos Linea Q
+    vector<Punto> Linea_Q = {
+        Punto(490, 438, 4), Punto(515, 438, 4), Punto(540, 438, 4),
+        Punto(570, 438, 4), Punto(600, 438, 4), Punto(460, 438, 4),
+        Punto(430, 438, 4)
+    };
+
+    // Puntos Linea R
+    vector<Punto> Linea_R = {
+        Punto(445, 468, 4), Punto(455, 518, 4), Punto(485, 518, 4),
+    };
+
+    // Puntos Linea S
+    vector<Punto> Linea_S = {
+        Punto(585, 468, 4), Punto(585, 498, 4), Punto(575, 518, 4),
+        Punto(545, 518, 4)
+    };
+
+    // Puntos Linea T
+    vector<Punto> Linea_T = {
+        Punto(440, 653, 4), 
     };
 
     // Crear a PacLady
@@ -199,6 +246,38 @@ int main() {
         }
 
         for (auto &punto : Linea_M) {
+            punto.dibujar(window.getRenderWindow());
+        }
+
+        for (auto &punto : Linea_N) {
+            punto.dibujar(window.getRenderWindow());
+        }
+
+        for (auto &punto : Linea_NN) {
+            punto.dibujar(window.getRenderWindow());
+        }
+
+        for (auto &punto : Linea_O) {
+            punto.dibujar(window.getRenderWindow());
+        }
+
+        for (auto &punto : Linea_P) {
+            punto.dibujar(window.getRenderWindow());
+        }
+
+        for (auto &punto : Linea_Q) {
+            punto.dibujar(window.getRenderWindow());
+        }
+
+        for (auto &punto : Linea_R) {
+            punto.dibujar(window.getRenderWindow());
+        }
+
+        for (auto &punto : Linea_S) {
+            punto.dibujar(window.getRenderWindow());
+        }
+
+        for (auto &punto : Linea_T) {
             punto.dibujar(window.getRenderWindow());
         }
 
