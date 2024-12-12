@@ -8,7 +8,7 @@
 
 int main() {
 
-    int xorigen = 280;
+    int xorigen = 300;
     int yorigen = 609;
 
     // Crear la ventana
