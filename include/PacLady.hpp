@@ -1,64 +1,65 @@
 #include <SFML/Graphics.hpp>
-#include <iostream>
-using namespace std;
-using namespace sf;
 
-class PacLady
-{
+class PacLady {
 public:
-    // Constructor
-    PacLady(const string &rutaImagen, float x, float y, float velocidad = .5f) : velocidad(velocidad)
-    {
-        if (!textura.loadFromFile(rutaImagen))
-        {
-            cout << "Error: No se pudo cargar la imagen de PacLady." << endl;
+    PacLady(const std::string& rutaImagen, float x, float y, float velocidad = .5f) 
+        : velocidad(velocidad), origenX(x), origenY(y) {
+        if (!textura.loadFromFile(rutaImagen)) {
+            throw std::runtime_error("No se pudo cargar la imagen de PacLady.");
         }
         sprite.setTexture(textura);
         sprite.setPosition(x, y);
-
         sprite.setScale(0.03f, 0.03f); // Escalar la imagen para hacerla más pequeña
-
     }
 
-    // Mover a PacLady
-    void mover(Keyboard::Key tecla, float velocidad)
-    {
+    void mover(sf::Keyboard::Key tecla, float velocidad) {
         sf::Vector2f movimiento(0.0f, 0.0f);
+        sf::Vector2f nuevaPosicion = sprite.getPosition();
 
-        if (tecla == Keyboard::Up)
-        {
+        if (tecla == sf::Keyboard::Up) {
             movimiento.y -= velocidad;
-        }
-        else if (tecla == Keyboard::Down)
-        {
+            nuevaPosicion.y -= velocidad;
+        } else if (tecla == sf::Keyboard::Down) {
             movimiento.y += velocidad;
-        }
-        else if (tecla == Keyboard::Left)
-        {
+            nuevaPosicion.y += velocidad;
+        } else if (tecla == sf::Keyboard::Left) {
             movimiento.x -= velocidad;
-        }
-        else if (tecla == Keyboard::Right)
-        {
+            nuevaPosicion.x -= velocidad;
+        } else if (tecla == sf::Keyboard::Right) {
             movimiento.x += velocidad;
+            nuevaPosicion.x += velocidad;
         }
 
-        sprite.move(movimiento);
+        // Verificar si PacLady está en la coordenada específica
+        if (static_cast<int>(nuevaPosicion.x) == static_cast<int>(coordenadaEspecificaX) && 
+            static_cast<int>(nuevaPosicion.y) == static_cast<int>(coordenadaEspecificaY)) {
+            restablecerPosicion();
+        }
     }
 
-    // Dibujar a PacLady
-    void dibujar(RenderWindow &ventana)
-    {
+    void dibujar(sf::RenderWindow& ventana) {
         ventana.draw(sprite);
     }
 
-    // Obtener la posición central de PacLady
-    Vector2f getCenterPosition() const {
-        FloatRect bounds = sprite.getGlobalBounds();
-        return Vector2f(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
+    sf::Vector2f getCenterPosition() const {
+        sf::FloatRect bounds = sprite.getGlobalBounds();
+        return sf::Vector2f(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
+    }
+
+    void setCoordenadaEspecifica(float x, float y) {
+        coordenadaEspecificaX = x;
+        coordenadaEspecificaY = y;
     }
 
 private:
-    Texture textura; // Textura para cargar la imagen
-    Sprite sprite;   // Sprite que representa a PacLady
+    
+    void restablecerPosicion() {
+        sprite.setPosition(origenX, origenY);
+    }
+
+    sf::Texture textura;
+    sf::Sprite sprite;
     float velocidad;
+    float origenX = 725, origenY = 609;
+    float coordenadaEspecificaX, coordenadaEspecificaY;
 };

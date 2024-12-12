@@ -27,7 +27,7 @@ int main() {
     puntaje.setImagePosition(370, 100); // Ajustar la posición de la imagen
     puntaje.setTextSize(20); // Ajustar el tamaño del texto
     puntaje.setTextPosition(450, 265); // Ajustar la posición del texto
-    puntaje.setTextString("0"); // Establecer el texto inicial
+    puntaje.setTextString("Puntaje: 0"); // Establecer el texto inicial
 
     // Puntos Linea A
     vector<Punto> Linea_A = {
@@ -179,6 +179,9 @@ int main() {
 
     // Crear a PacLady
     PacLady pacLady("assets/images/Pac-Lady.png", xorigen, yorigen); // Cambia la ruta de la imagen
+
+    // Configurar la coordenada específica que llevará a PacLady de vuelta a su origen
+    pacLady.setCoordenadaEspecifica(725, 609);
 
     // Bucle principal
     while (window.isOpen()) {
