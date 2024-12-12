@@ -205,6 +205,7 @@ int main() {
                     pacLady.getCenterPosition().y + 8 > punto.getPosition().y) {
                     punto.setVisible(false);
                 }
+                punto.actualizar(); // Actualizar el estado de visibilidad del punto
             }
         };
 

@@ -21,13 +21,23 @@ public:
 
     void setVisible(bool v) {
         visible = v;
+        if (!v) {
+            reloj.restart(); // Reiniciar el reloj cuando el punto se hace invisible
+        }
     }
 
     bool isVisible() const {
         return visible;
     }
 
+    void actualizar() {
+        if (!visible && reloj.getElapsedTime().asSeconds() >= 3) {
+            visible = true; // Hacer visible el punto después de 3 segundos
+        }
+    }
+
 private:
     CircleShape circulo;
     bool visible;
+    Clock reloj;
 };
