@@ -1,20 +1,22 @@
 #include <SFML/Graphics.hpp>
 #include <string>
+using namespace sf;
+using namespace std;
 
 class Puntaje {
 public:
-    Puntaje(const std::string& fontPath, const std::string& imagePath) : puntaje(0) {
+    Puntaje(const string& fontPath, const string& imagePath) : puntaje(0) {
         if (!fuente.loadFromFile(fontPath)) {
-            throw std::runtime_error("No se pudo cargar la fuente");
+            throw runtime_error("No se pudo cargar la fuente");
         }
         texto.setFont(fuente);
-        texto.setCharacterSize(24);
-        texto.setFillColor(sf::Color::White);
-        texto.setPosition(10, 10);
+        texto.setCharacterSize(50); // Tamaño de texto por defecto
+        texto.setFillColor(Color::White);
+        texto.setPosition(10, 10); // Posición por defecto
         actualizarTexto();
 
         if (!textura.loadFromFile(imagePath)) {
-            throw std::runtime_error("No se pudo cargar la imagen");
+            throw runtime_error("No se pudo cargar la imagen");
         }
         sprite.setTexture(textura);
     }
@@ -24,9 +26,9 @@ public:
         actualizarTexto();
     }
 
-    void dibujar(sf::RenderWindow& ventana) {
-        ventana.draw(texto);
+    void dibujar(RenderWindow& ventana) {
         ventana.draw(sprite);
+        ventana.draw(texto);
     }
 
     int obtenerPuntaje() const {
@@ -41,14 +43,26 @@ public:
         sprite.setPosition(x, y);
     }
 
+    void setTextSize(unsigned int size) {
+        texto.setCharacterSize(size);
+    }
+
+    void setTextPosition(float x, float y) {
+        texto.setPosition(x, y);
+    }
+
+    void setTextString(const std::string& str) {
+        texto.setString(str);
+    }
+
 private:
     void actualizarTexto() {
         texto.setString("Puntaje: " + std::to_string(puntaje));
     }
 
     int puntaje;
-    sf::Font fuente;
-    sf::Text texto;
-    sf::Texture textura;
-    sf::Sprite sprite;
+    Font fuente;
+    Text texto;
+    Texture textura;
+    Sprite sprite;
 };

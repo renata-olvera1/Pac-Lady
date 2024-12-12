@@ -21,10 +21,13 @@ int main() {
     // Centrar el mapa en la ventana
     mapa.centrarEnVentana(window.getSize());
 
-    // Crear el puntaje
+    // Crear el puntaje con un valor inicial de 0
     Puntaje puntaje("assets/fonts/CrackMan.ttf", "assets/images/Puntaje.png");
     puntaje.setImageSize(300, 300); // Ajustar el tamaño de la imagen
-    puntaje.setImagePosition(365, 100); // Ajustar la posición de la imagen
+    puntaje.setImagePosition(370, 100); // Ajustar la posición de la imagen
+    puntaje.setTextSize(20); // Ajustar el tamaño del texto
+    puntaje.setTextPosition(450, 265); // Ajustar la posición del texto
+    puntaje.setTextString("0"); // Establecer el texto inicial
 
     // Puntos Linea A
     vector<Punto> Linea_A = {
@@ -202,14 +205,18 @@ int main() {
             pacLady.mover(Keyboard::Right, .045f);
         }
 
-        // Detectar colisiones y eliminar puntos
-        auto detectCollision = [&pacLady](vector<Punto>& puntos) {
+        // Detectar colisiones y actualizar puntaje
+        auto detectCollision = [&pacLady, &puntaje](vector<Punto>& puntos) {
             for (auto& punto : puntos) {
                 if (pacLady.getCenterPosition().x < punto.getPosition().x + 8 &&
                     pacLady.getCenterPosition().x + 8 > punto.getPosition().x &&
                     pacLady.getCenterPosition().y < punto.getPosition().y + 8 &&
                     pacLady.getCenterPosition().y + 8 > punto.getPosition().y) {
-                    punto.setVisible(false);
+                    if (punto.isVisible()) {
+                        punto.setVisible(false);
+                        puntaje.aumentar();
+                        puntaje.setTextString("Puntaje: " + std::to_string(puntaje.obtenerPuntaje()));
+                    }
                 }
                 punto.actualizar(); // Actualizar el estado de visibilidad del punto
             }
