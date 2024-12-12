@@ -31,8 +31,8 @@ public:
     }
 
     void actualizar() {
-        if (!visible && reloj.getElapsedTime().asSeconds() >= 3) {
-            visible = true; // Hacer visible el punto después de 3 segundos
+        if (!visible && reloj.getElapsedTime().asSeconds() >= 5) {
+            visible = true; // Hacer visible el punto después de 5 segundos
         }
     }
 
