@@ -22,7 +22,9 @@ int main() {
     mapa.centrarEnVentana(window.getSize());
 
     // Crear el puntaje
-    Puntaje puntaje("assets/fonts/arial.ttf");
+    Puntaje puntaje("assets/fonts/CrackMan.ttf", "assets/images/Puntaje.png");
+    puntaje.setImageSize(300, 300); // Ajustar el tamaño de la imagen
+    puntaje.setImagePosition(365, 100); // Ajustar la posición de la imagen
 
     // Puntos Linea A
     vector<Punto> Linea_A = {
