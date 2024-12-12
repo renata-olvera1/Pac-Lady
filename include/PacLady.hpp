@@ -51,9 +51,10 @@ public:
         ventana.draw(sprite);
     }
 
-    // Obtener la posición de PacLady
-    Vector2f getPosition() const {
-        return sprite.getPosition();
+    // Obtener la posición central de PacLady
+    Vector2f getCenterPosition() const {
+        FloatRect bounds = sprite.getGlobalBounds();
+        return Vector2f(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
     }
 
 private:

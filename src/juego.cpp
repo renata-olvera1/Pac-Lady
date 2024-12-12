@@ -3,6 +3,7 @@
 #include "Punto.hpp"
 #include "PacLady.hpp"
 #include <vector>
+#include <algorithm>
 
 int main() {
 
@@ -198,10 +199,10 @@ int main() {
         // Detectar colisiones y eliminar puntos
         auto detectCollision = [&pacLady](vector<Punto>& puntos) {
             for (auto& punto : puntos) {
-                if (pacLady.getPosition().x < punto.getPosition().x + 8 &&
-                    pacLady.getPosition().x + 8 > punto.getPosition().x &&
-                    pacLady.getPosition().y < punto.getPosition().y + 8 &&
-                    pacLady.getPosition().y + 8 > punto.getPosition().y) {
+                if (pacLady.getCenterPosition().x < punto.getPosition().x + 8 &&
+                    pacLady.getCenterPosition().x + 8 > punto.getPosition().x &&
+                    pacLady.getCenterPosition().y < punto.getPosition().y + 8 &&
+                    pacLady.getCenterPosition().y + 8 > punto.getPosition().y) {
                     punto.setVisible(false);
                 }
             }
