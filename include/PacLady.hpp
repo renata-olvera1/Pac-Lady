@@ -51,6 +51,11 @@ public:
         ventana.draw(sprite);
     }
 
+    // Obtener la posición de PacLady
+    Vector2f getPosition() const {
+        return sprite.getPosition();
+    }
+
 private:
     Texture textura; // Textura para cargar la imagen
     Sprite sprite;   // Sprite que representa a PacLady

@@ -164,7 +164,7 @@ int main() {
         Punto(440, 653, 4), Punto(440, 623, 4), Punto(440, 593, 4),
         Punto(440, 563, 4), Punto(470, 563, 4), Punto(500, 563, 4),
         Punto(530, 563, 4), Punto(560, 563, 4), Punto(585, 563, 4),
-        Punto(585, 593, 4), Punto(585, 623, 4), Punto(585, 653, 4),
+        Punto(585, 593, 4), Punto(585, 623, 4), Punto(585, 653, 4)
     };
 
     // Crear a PacLady
@@ -194,6 +194,40 @@ int main() {
         if (Keyboard::isKeyPressed(Keyboard::Right)) {
             pacLady.mover(Keyboard::Right, .045f);
         }
+
+        // Detectar colisiones y eliminar puntos
+        auto detectCollision = [&pacLady](vector<Punto>& puntos) {
+            for (auto& punto : puntos) {
+                if (pacLady.getPosition().x < punto.getPosition().x + 8 &&
+                    pacLady.getPosition().x + 8 > punto.getPosition().x &&
+                    pacLady.getPosition().y < punto.getPosition().y + 8 &&
+                    pacLady.getPosition().y + 8 > punto.getPosition().y) {
+                    punto.setVisible(false);
+                }
+            }
+        };
+
+        detectCollision(Linea_A);
+        detectCollision(Linea_B);
+        detectCollision(Linea_C);
+        detectCollision(Linea_D);
+        detectCollision(Linea_E);
+        detectCollision(Linea_F);
+        detectCollision(Linea_G);
+        detectCollision(Linea_H);
+        detectCollision(Linea_I);
+        detectCollision(Linea_J);
+        detectCollision(Linea_K);
+        detectCollision(Linea_L);
+        detectCollision(Linea_M);
+        detectCollision(Linea_N);
+        detectCollision(Linea_NN);
+        detectCollision(Linea_O);
+        detectCollision(Linea_P);
+        detectCollision(Linea_Q);
+        detectCollision(Linea_R);
+        detectCollision(Linea_S);
+        detectCollision(Linea_T);
 
         // Dibujar elementos en la ventana
         window.clear();
