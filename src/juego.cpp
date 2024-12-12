@@ -8,7 +8,7 @@
 
 int main() {
 
-    int xorigen = 275;
+    int xorigen = 280;
     int yorigen = 609;
 
     // Crear la ventana
@@ -179,9 +179,6 @@ int main() {
 
     // Crear a PacLady
     PacLady pacLady("assets/images/Pac-Lady.png", xorigen, yorigen); // Cambia la ruta de la imagen
-
-    // Configurar la coordenada específica que llevará a PacLady de vuelta a su origen
-    pacLady.setCoordenadaEspecifica(725, 609);
 
     // Bucle principal
     while (window.isOpen()) {
