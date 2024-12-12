@@ -1,64 +1,60 @@
 #include <SFML/Graphics.hpp>
-#include <iostream>
+#include <string>
+#include "CollisionMap.hpp"
 using namespace std;
 using namespace sf;
 
-class PacLady
-{
+class PacLady {
 public:
-    // Constructor
-    PacLady(const string &rutaImagen, float x, float y, float velocidad = .5f) : velocidad(velocidad)
-    {
-        if (!textura.loadFromFile(rutaImagen))
-        {
-            cout << "Error: No se pudo cargar la imagen de PacLady." << endl;
+    PacLady(const string& rutaImagen, float x, float y, float velocidad = .5f) : velocidad(velocidad) {
+        if (!textura.loadFromFile(rutaImagen)) {
+            throw runtime_error("No se pudo cargar la imagen de PacLady.");
         }
         sprite.setTexture(textura);
         sprite.setPosition(x, y);
-
         sprite.setScale(0.03f, 0.03f); // Escalar la imagen para hacerla más pequeña
-
     }
 
-    // Mover a PacLady
-    void mover(Keyboard::Key tecla, float velocidad)
-    {
-        sf::Vector2f movimiento(0.0f, 0.0f);
+    void mover(Keyboard::Key tecla, float velocidad) {
+        Vector2f movimiento(0.0f, 0.0f);
+        Vector2f nuevaPosicion = sprite.getPosition();
 
-        if (tecla == Keyboard::Up)
-        {
+        if (tecla == Keyboard::Up) {
             movimiento.y -= velocidad;
-        }
-        else if (tecla == Keyboard::Down)
-        {
+            nuevaPosicion.y -= velocidad;
+        } else if (tecla == Keyboard::Down) {
             movimiento.y += velocidad;
-        }
-        else if (tecla == Keyboard::Left)
-        {
+            nuevaPosicion.y += velocidad;
+        } else if (tecla == Keyboard::Left) {
             movimiento.x -= velocidad;
-        }
-        else if (tecla == Keyboard::Right)
-        {
+            nuevaPosicion.x -= velocidad;
+        } else if (tecla == Keyboard::Right) {
             movimiento.x += velocidad;
+            nuevaPosicion.x += velocidad;
         }
 
-        sprite.move(movimiento);
+        if (!checkCollision(nuevaPosicion.x, nuevaPosicion.y)) {
+            sprite.move(movimiento);
+        }
     }
 
-    // Dibujar a PacLady
-    void dibujar(RenderWindow &ventana)
-    {
+    void dibujar(RenderWindow& ventana) {
         ventana.draw(sprite);
     }
 
-    // Obtener la posición central de PacLady
     Vector2f getCenterPosition() const {
         FloatRect bounds = sprite.getGlobalBounds();
         return Vector2f(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
     }
 
 private:
-    Texture textura; // Textura para cargar la imagen
-    Sprite sprite;   // Sprite que representa a PacLady
+    bool checkCollision(float x, float y) {
+        int gridX = static_cast<int>(x / TILE_SIZE);
+        int gridY = static_cast<int>(y / TILE_SIZE);
+        return collisionMap[gridY][gridX] == 1;
+    }
+
+    Texture textura;
+    Sprite sprite;
     float velocidad;
 };
