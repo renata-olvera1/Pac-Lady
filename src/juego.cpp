@@ -161,7 +161,10 @@ int main() {
 
     // Puntos Linea T
     vector<Punto> Linea_T = {
-        Punto(440, 653, 4), 
+        Punto(440, 653, 4), Punto(440, 623, 4), Punto(440, 593, 4),
+        Punto(440, 563, 4), Punto(470, 563, 4), Punto(500, 563, 4),
+        Punto(530, 563, 4), Punto(560, 563, 4), Punto(585, 563, 4),
+        Punto(585, 593, 4), Punto(585, 623, 4), Punto(585, 653, 4),
     };
 
     // Crear a PacLady
