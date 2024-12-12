@@ -2,6 +2,7 @@
 #include "GameWindow.hpp"
 #include "Punto.hpp"
 #include "PacLady.hpp"
+#include "Puntaje.hpp"
 #include <vector>
 #include <algorithm>
 
@@ -19,6 +20,9 @@ int main() {
 
     // Centrar el mapa en la ventana
     mapa.centrarEnVentana(window.getSize());
+
+    // Crear el puntaje
+    Puntaje puntaje("assets/fonts/arial.ttf");
 
     // Puntos Linea A
     vector<Punto> Linea_A = {
@@ -319,6 +323,9 @@ int main() {
         for (auto &punto : Linea_T) {
             punto.dibujar(window.getRenderWindow());
         }
+
+        // Dibujar el puntaje
+        puntaje.dibujar(window.getRenderWindow());
 
         pacLady.dibujar(window.getRenderWindow());
         window.display();
