@@ -4,44 +4,53 @@
 using namespace std;
 using namespace sf;
 
-
-class GameWindow {
+class GameWindow
+{
 public:
-    GameWindow(int width, int height, const string& title) {
+    GameWindow(int width, int height, const string &title)
+    {
         window.create(VideoMode(width, height), title);
     }
 
-    bool isOpen() {
+    bool isOpen()
+    {
         return window.isOpen();
     }
 
-    void close() {
+    void close()
+    {
         window.close();
     }
 
-    void clear() {
+    void clear()
+    {
         window.clear();
     }
 
-    void display() {
+    void display()
+    {
         window.display();
     }
 
     // Método modificado para aceptar cualquier objeto sf::Drawable
-    void draw(const Drawable& drawable) {
+    void draw(const Drawable &drawable)
+    {
         window.draw(drawable);
     }
 
-    bool pollEvent(Event& event) {
+    bool pollEvent(Event &event)
+    {
         return window.pollEvent(event);
     }
 
-    Vector2u getSize() {
+    Vector2u getSize()
+    {
         return window.getSize();
     }
 
     // Método para obtener la referencia a la ventana
-    RenderWindow& getRenderWindow() {
+    RenderWindow &getRenderWindow()
+    {
         return window;
     }
 

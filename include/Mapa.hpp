@@ -3,12 +3,14 @@
 using namespace std;
 using namespace sf;
 
-
-class Mapa {
+class Mapa
+{
 public:
     // Constructor: carga la textura y configura el sprite
-    Mapa(const string& rutaImagen, float escala) {
-        if (!texture.loadFromFile(rutaImagen)) {
+    Mapa(const string &rutaImagen, float escala)
+    {
+        if (!texture.loadFromFile(rutaImagen))
+        {
             cout << "Error: No se pudo cargar la imagen: " << rutaImagen << endl;
             exit(-1); // Salir si hay un error
         }
@@ -23,12 +25,14 @@ public:
     }
 
     // Método para centrar el sprite en la ventana
-    void centrarEnVentana(Vector2u windowSize) {
+    void centrarEnVentana(Vector2u windowSize)
+    {
         sprite.setPosition(windowSize.x / 2, windowSize.y / 2);
     }
 
     // Método para dibujar el mapa
-    void dibujar(RenderWindow& ventana) {
+    void dibujar(RenderWindow &ventana)
+    {
         ventana.draw(sprite);
     }
 

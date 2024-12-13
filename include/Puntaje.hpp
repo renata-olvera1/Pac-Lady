@@ -3,10 +3,13 @@
 using namespace sf;
 using namespace std;
 
-class Puntaje {
+class Puntaje
+{
 public:
-    Puntaje(const string& fontPath, const string& imagePath) : puntaje(0) {
-        if (!fuente.loadFromFile(fontPath)) {
+    Puntaje(const string &fontPath, const string &imagePath) : puntaje(0)
+    {
+        if (!fuente.loadFromFile(fontPath))
+        {
             throw runtime_error("No se pudo cargar la fuente");
         }
         texto.setFont(fuente);
@@ -15,48 +18,58 @@ public:
         texto.setPosition(10, 10); // Posición por defecto
         actualizarTexto();
 
-        if (!textura.loadFromFile(imagePath)) {
+        if (!textura.loadFromFile(imagePath))
+        {
             throw runtime_error("No se pudo cargar la imagen");
         }
         sprite.setTexture(textura);
     }
 
-    void aumentar() {
+    void aumentar()
+    {
         puntaje++;
         actualizarTexto();
     }
 
-    void dibujar(RenderWindow& ventana) {
+    void dibujar(RenderWindow &ventana)
+    {
         ventana.draw(sprite);
         ventana.draw(texto);
     }
 
-    int obtenerPuntaje() const {
+    int obtenerPuntaje() const
+    {
         return puntaje;
     }
 
-    void setImageSize(float width, float height) {
+    void setImageSize(float width, float height)
+    {
         sprite.setScale(width / sprite.getLocalBounds().width, height / sprite.getLocalBounds().height);
     }
 
-    void setImagePosition(float x, float y) {
+    void setImagePosition(float x, float y)
+    {
         sprite.setPosition(x, y);
     }
 
-    void setTextSize(unsigned int size) {
+    void setTextSize(unsigned int size)
+    {
         texto.setCharacterSize(size);
     }
 
-    void setTextPosition(float x, float y) {
+    void setTextPosition(float x, float y)
+    {
         texto.setPosition(x, y);
     }
 
-    void setTextString(const std::string& str) {
+    void setTextString(const std::string &str)
+    {
         texto.setString(str);
     }
 
 private:
-    void actualizarTexto() {
+    void actualizarTexto()
+    {
         texto.setString("Puntaje: " + std::to_string(puntaje));
     }
 
