@@ -28,13 +28,19 @@ int main() {
     Fantasma fantasma3("assets/images/NieveChocolate.png", 200, 200, 0.2f);
     Fantasma fantasma4("assets/images/NievePistache.png", 200, 200, 0.2f);
 
+    // Ajustar la posición inicial de los fantasmas
+    fantasma1.setPosition(545, 790);
+    fantasma2.setPosition(530, 590);
+    fantasma3.setPosition(530, 590);
+    fantasma4.setPosition(470, 590);
+
     // Crear el puntaje con un valor inicial de 0
     Puntaje puntaje("assets/fonts/CrackMan.ttf", "assets/images/Puntaje.png");
     puntaje.setImageSize(300, 300); // Ajustar el tamaño de la imagen
     puntaje.setImagePosition(370, 100); // Ajustar la posición de la imagen
     puntaje.setTextSize(20); // Ajustar el tamaño del texto
     puntaje.setTextPosition(450, 265); // Ajustar la posición del texto
-    puntaje.setTextString("0"); // Establecer el texto inicial
+    puntaje.setTextString("Puntaje: 0"); // Establecer el texto inicial
 
     // Puntos Linea A
     vector<Punto> Linea_A = {

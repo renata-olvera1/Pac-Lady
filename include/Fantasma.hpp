@@ -16,7 +16,7 @@ public:
         }
         sprite.setTexture(textura);
         sprite.setPosition(x, y);
-        sprite.setScale(0.03f, 0.03f); // Escalar la imagen para ajustarla
+        sprite.setScale(0.2f, 0.2f); // Escalar la imagen para ajustarla
     }
 
     // Movimiento automático (patrón simple de movimiento)
@@ -36,12 +36,15 @@ public:
         FloatRect bounds = sprite.getGlobalBounds();
         for (int x = bounds.left; x < bounds.left + bounds.width; x++) {
             for (int y = bounds.top; y < bounds.top + bounds.height; y++) {
-                // Obtén el color del píxel actual en el mapa
-                Color pixelColor = mapa.getPixel(x, y);
+                // Verifica si las coordenadas están dentro del mapa
+                if (x >= 0 && x < static_cast<int>(mapa.getSize().x) && y >= 0 && y < static_cast<int>(mapa.getSize().y)) {
+                    // Obtén el color del píxel actual en el mapa
+                    Color pixelColor = mapa.getPixel(x, y);
 
-                // Verifica si es marrón
-                if (pixelColor == Color(139, 69, 19)) { // RGB para marrón
-                    return true; // Colisión detectada
+                    // Verifica si es marrón
+                    if (pixelColor == Color(139, 69, 19)) { // RGB para marrón
+                        return true; // Colisión detectada
+                    }
                 }
             }
         }
@@ -51,6 +54,11 @@ public:
     // Dibujar al fantasma
     void dibujar(RenderWindow &ventana) {
         ventana.draw(sprite);
+    }
+
+    // Establecer la posición inicial del fantasma
+    void setPosition(float x, float y) {
+        sprite.setPosition(x, y);
     }
 
 private:
