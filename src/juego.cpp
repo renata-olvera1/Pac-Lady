@@ -44,7 +44,7 @@ int main() {
     puntaje.setTextString("Puntaje: 0"); // Establecer el texto inicial
 
     // Crear la vida con un marco y 3 corazones
-    Vida vida("assets/images/Corazon.png", 100, 50, 3);
+    Vida vida("assets/images/Corazon.png", 50, 250, 3, 0.1f);
 
     // Puntos Linea A
     vector<Punto> Linea_A = {
@@ -368,6 +368,10 @@ int main() {
         for (auto &punto : Linea_T) {
             punto.dibujar(window.getRenderWindow());
         }
+
+        // Dibujar el puntaje
+        puntaje.dibujar(window.getRenderWindow());
+
 
         // Dibujar a PacLady
         pacLady.dibujar(window.getRenderWindow());

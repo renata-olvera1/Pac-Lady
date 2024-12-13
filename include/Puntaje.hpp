@@ -1,24 +1,24 @@
 #include <SFML/Graphics.hpp>
 #include <string>
+
 using namespace sf;
 using namespace std;
 
 class Puntaje {
 public:
-    Puntaje(const string& fontPath, const string& imagePath) : puntaje(0) {
-        if (!fuente.loadFromFile(fontPath)) {
-            throw runtime_error("No se pudo cargar la fuente");
+    Puntaje(const string &rutaFuente, const string &rutaImagen) {
+        if (!fuente.loadFromFile(rutaFuente)) {
+            throw runtime_error("No se pudo cargar la fuente.");
+        }
+        if (!textura.loadFromFile(rutaImagen)) {
+            throw runtime_error("No se pudo cargar la imagen.");
         }
         texto.setFont(fuente);
-        texto.setCharacterSize(50); // Tamaño de texto por defecto
+        texto.setCharacterSize(24);
         texto.setFillColor(Color::White);
-        texto.setPosition(10, 10); // Posición por defecto
-        actualizarTexto();
-
-        if (!textura.loadFromFile(imagePath)) {
-            throw runtime_error("No se pudo cargar la imagen");
-        }
         sprite.setTexture(textura);
+        puntaje = 0;
+        actualizarTexto();
     }
 
     void aumentar() {
@@ -26,13 +26,9 @@ public:
         actualizarTexto();
     }
 
-    void dibujar(RenderWindow& ventana) {
+    void dibujar(RenderWindow &ventana) {
         ventana.draw(sprite);
         ventana.draw(texto);
-    }
-
-    int obtenerPuntaje() const {
-        return puntaje;
     }
 
     void setImageSize(float width, float height) {
@@ -51,8 +47,12 @@ public:
         texto.setPosition(x, y);
     }
 
-    void setTextString(const std::string& str) {
+    void setTextString(const string &str) {
         texto.setString(str);
+    }
+
+    int obtenerPuntaje() const {
+        return puntaje;
     }
 
 private:
