@@ -7,16 +7,11 @@ using namespace std;
 
 class Vida {
 public:
-    Vida(const string &rutaMarco, const string &rutaCorazon, float xMarco, float yMarco, float xCorazon, float yCorazon, int numCorazones) {
-        if (!texturaMarco.loadFromFile(rutaMarco)) {
-            cout << "Error: No se pudo cargar la imagen del marco." << endl;
-        }
+    Vida(const string &rutaCorazon, float xCorazon, float yCorazon, int numCorazones) {
+        
         if (!texturaCorazon.loadFromFile(rutaCorazon)) {
             cout << "Error: No se pudo cargar la imagen del corazón." << endl;
         }
-
-        spriteMarco.setTexture(texturaMarco);
-        spriteMarco.setPosition(xMarco, yMarco);
 
         for (int i = 0; i < numCorazones; ++i) {
             Sprite corazon;
@@ -27,7 +22,6 @@ public:
     }
 
     void dibujar(RenderWindow &ventana) {
-        ventana.draw(spriteMarco);
         for (const auto &corazon : corazones) {
             ventana.draw(corazon);
         }
@@ -48,7 +42,6 @@ private:
         return xInicial + indice * (texturaCorazon.getSize().x + 10); // Ajusta el espacio entre corazones
     }
 
-    Texture texturaMarco;
     Texture texturaCorazon;
     Sprite spriteMarco;
     vector<Sprite> corazones;

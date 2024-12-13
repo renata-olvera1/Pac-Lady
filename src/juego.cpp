@@ -44,7 +44,7 @@ int main() {
     puntaje.setTextString("Puntaje: 0"); // Establecer el texto inicial
 
     // Crear la vida con un marco y 3 corazones
-    Vida vida("assets/images/Marco.png", "assets/images/Corazon.png", 50, 50, 100, 50, 3);
+    Vida vida("assets/images/Corazon.png", 100, 50, 3);
 
     // Puntos Linea A
     vector<Punto> Linea_A = {
