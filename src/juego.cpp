@@ -5,6 +5,7 @@
 #include "Puntaje.hpp"
 #include <vector>
 #include <algorithm>
+#include "Fantasma.hpp"
 
 int main() {
 
@@ -20,6 +21,10 @@ int main() {
 
     // Centrar el mapa en la ventana
     mapa.centrarEnVentana(window.getSize());
+
+    // Crear fantasmas 
+    Fantasma fantasma1("assets/images/NieveFresa.png", 100, 100, 0.2f); 
+    Fantasma fantasma2("assets/images/NieveVainilla.png", 200, 200, 0.2f);
 
     // Crear el puntaje con un valor inicial de 0
     Puntaje puntaje("assets/fonts/CrackMan.ttf", "assets/images/Puntaje.png");
@@ -205,6 +210,10 @@ int main() {
             pacLady.mover(Keyboard::Right, .045f);
         }
 
+        // Movimiento automático de los fantasmas 
+        fantasma1.moverAuto(window.getSize().x, window.getSize().y); 
+        fantasma2.moverAuto(window.getSize().x, window.getSize().y);
+
         // Detectar colisiones y actualizar puntaje
         auto detectCollision = [&pacLady, &puntaje](vector<Punto>& puntos) {
             for (auto& punto : puntos) {
@@ -337,6 +346,8 @@ int main() {
         puntaje.dibujar(window.getRenderWindow());
 
         pacLady.dibujar(window.getRenderWindow());
+        fantasma1.dibujar(window.getRenderWindow()); 
+        fantasma2.dibujar(window.getRenderWindow());
         window.display();
     }
 
