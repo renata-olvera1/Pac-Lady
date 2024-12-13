@@ -1,5 +1,3 @@
-#pragma once
-
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
@@ -31,27 +29,7 @@ public:
         sprite.move(direccion * velocidad);
     }
 
-    // Método para verificar colisiones con la línea marrón
-    bool verificarColision(const Image &mapa) {
-        FloatRect bounds = sprite.getGlobalBounds();
-        for (int x = bounds.left; x < bounds.left + bounds.width; x++) {
-            for (int y = bounds.top; y < bounds.top + bounds.height; y++) {
-                // Verifica si las coordenadas están dentro del mapa
-                if (x >= 0 && x < static_cast<int>(mapa.getSize().x) && y >= 0 && y < static_cast<int>(mapa.getSize().y)) {
-                    // Obtén el color del píxel actual en el mapa
-                    Color pixelColor = mapa.getPixel(x, y);
-
-                    // Verifica si es marrón
-                    if (pixelColor == Color(139, 69, 19)) { // RGB para marrón
-                        return true; // Colisión detectada
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    // Dibujar al fantasma
+    // Dibujar el fantasma en la ventana
     void dibujar(RenderWindow &ventana) {
         ventana.draw(sprite);
     }
@@ -61,10 +39,15 @@ public:
         sprite.setPosition(x, y);
     }
 
+    // Obtener la posición del fantasma
+    Vector2f getPosition() const {
+        return sprite.getPosition();
+    }
+
 private:
-    Texture textura;      // Textura para cargar la imagen
-    Sprite sprite;        // Sprite que representa al fantasma
-    Vector2f direccion{1.0f, 1.0f}; // Dirección inicial de movimiento
+
+    Texture textura;
+    Sprite sprite;
+    Vector2f direccion = {1.0f, 1.0f}; // Dirección inicial del movimiento
     float velocidad;
 };
-
