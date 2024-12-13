@@ -6,7 +6,7 @@ using namespace sf;
 
 class PacLady {
 public:
-    PacLady(const string& rutaImagen, float x, float y, float velocidad = .5f) : velocidad(velocidad) {
+    PacLady(const string& rutaImagen, float origenX, float origenY, float velocidad = .5f) : velocidad(velocidad) {
         if (!textura.loadFromFile(rutaImagen)) {
             throw runtime_error("No se pudo cargar la imagen de PacLady.");
         }
@@ -47,6 +47,10 @@ public:
         return Vector2f(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
     }
 
+    void resetPosition() {
+        sprite.setPosition(origenX, origenY);
+    }
+
 private:
     bool checkCollision(float x, float y) {
         int gridX = static_cast<int>(x / TILE_SIZE);
@@ -57,4 +61,7 @@ private:
     Texture textura;
     Sprite sprite;
     float velocidad;
+    float origenX = 275;
+    float origenY = 609;
+    float x, y;
 };

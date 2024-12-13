@@ -265,13 +265,14 @@ int main() {
         detectCollision(Linea_S);
         detectCollision(Linea_T);
 
-// Detectar colisiones con los fantasmas y eliminar corazones
+        // Detectar colisiones con los fantasmas y eliminar corazones
         auto detectGhostCollision = [&pacLady, &vida](Fantasma& fantasma) {
             if (pacLady.getCenterPosition().x < fantasma.getPosition().x + 8 &&
                 pacLady.getCenterPosition().x + 8 > fantasma.getPosition().x &&
                 pacLady.getCenterPosition().y < fantasma.getPosition().y + 8 &&
                 pacLady.getCenterPosition().y + 8 > fantasma.getPosition().y) {
                 vida.eliminarCorazon();
+                pacLady.resetPosition();
             }
         };
 
