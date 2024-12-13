@@ -15,7 +15,7 @@ public:
         sprite.setScale(0.03f, 0.03f); // Escalar la imagen para hacerla más pequeña
     }
 
-    void mover(Keyboard::Key tecla, float velocidad) {
+    void mover(Keyboard::Key tecla) {
         Vector2f movimiento(0.0f, 0.0f);
         Vector2f nuevaPosicion = sprite.getPosition();
 
@@ -33,6 +33,7 @@ public:
             nuevaPosicion.x += velocidad;
         }
 
+        // Verificar colisión antes de mover
         if (!checkCollision(nuevaPosicion.x, nuevaPosicion.y)) {
             sprite.move(movimiento);
         }
@@ -47,14 +48,31 @@ public:
         return Vector2f(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
     }
 
+    // Método para establecer el mapa de colisiones (imagen de mapa)
+    void setCollisionMap(const Image& mapaColisiones) {
+        mapaColisiones = mapaColisiones; // Guardar el mapa de colisiones
+    }
+
 private:
     bool checkCollision(float x, float y) {
-        int gridX = static_cast<int>(x / TILE_SIZE);
+        // Obtener las coordenadas del píxel de la nueva posición
+        int gridX = static_cast<int>(x / TILE_SIZE); // Dividir por el tamaño de cada "tile"
         int gridY = static_cast<int>(y / TILE_SIZE);
-        return collisionMap[gridY][gridX] == 1;
+
+        // Verificar si la coordenada está dentro de los límites del mapa
+        if (gridX < 0 || gridY < 0 || gridX >= mapaColisiones.getSize().x || gridY >= mapaColisiones.getSize().y) {
+            return true; // Fuera del mapa, considera que hay colisión
+        }
+
+        // Obtener el color del píxel en esa posición
+        Color pixelColor = mapaColisiones.getPixel(gridX, gridY);
+        
+        // Verificar si el color es el color de la pared (color café oscuro)
+        return pixelColor == Color(101, 67, 33); // Compara con el color de las paredes
     }
 
     Texture textura;
     Sprite sprite;
     float velocidad;
+    Image mapaColisiones; // Variable para almacenar el mapa de colisiones
 };

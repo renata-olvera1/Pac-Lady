@@ -25,9 +25,9 @@ int main() {
     // Crear fantasmas 
     Fantasma fantasma1("assets/images/NieveFresa.png", 100, 100, 0.2f); 
     Fantasma fantasma2("assets/images/NieveVainilla.png", 200, 200, 0.2f);
-    Fantasma fantasma3("assets/images/NieveChocolate.png", 200, 200, 0.2f);
-    Fantasma fantasma4("assets/images/NievePistache.png", 200, 200, 0.2f);
-
+    Fantasma fantasma3("assets/images/NievePistache.png", 200, 200, 0.2f);
+    Fantasma fantasma4("assets/images/NieveChocolate.png", 200, 200, 0.2f);
+    
     // Crear el puntaje con un valor inicial de 0
     Puntaje puntaje("assets/fonts/CrackMan.ttf", "assets/images/Puntaje.png");
     puntaje.setImageSize(300, 300); // Ajustar el tamaño de la imagen
