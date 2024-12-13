@@ -34,7 +34,10 @@ int main() {
     puntaje.setImagePosition(370, 100); // Ajustar la posición de la imagen
     puntaje.setTextSize(20); // Ajustar el tamaño del texto
     puntaje.setTextPosition(450, 265); // Ajustar la posición del texto
-    puntaje.setTextString("0"); // Establecer el texto inicial
+    puntaje.setTextString("Puntaje: 0"); // Establecer el texto inicial
+
+    // Crear la vida con un marco y 3 corazones
+    Vida vida("assets/images/Corazon.png", 100, 50, 3);
 
     // Puntos Linea A
     vector<Punto> Linea_A = {
@@ -255,6 +258,20 @@ int main() {
         detectCollision(Linea_S);
         detectCollision(Linea_T);
 
+// Detectar colisiones con los fantasmas y eliminar corazones
+        auto detectGhostCollision = [&pacLady, &vida](Fantasma& fantasma) {
+            if (pacLady.getCenterPosition().x < fantasma.getPosition().x + 8 &&
+                pacLady.getCenterPosition().x + 8 > fantasma.getPosition().x &&
+                pacLady.getCenterPosition().y < fantasma.getPosition().y + 8 &&
+                pacLady.getCenterPosition().y + 8 > fantasma.getPosition().y) {
+                vida.eliminarCorazon();
+            }
+        };
+
+        detectGhostCollision(fantasma1);
+        detectGhostCollision(fantasma2);
+        detectGhostCollision(fantasma3);
+        detectGhostCollision(fantasma4);
         // Dibujar elementos en la ventana
         window.clear();
         mapa.dibujar(window.getRenderWindow());
@@ -346,6 +363,10 @@ int main() {
 
         // Dibujar el puntaje
         puntaje.dibujar(window.getRenderWindow());
+
+
+        // Dibujar a PacLady
+        pacLady.dibujar(window.getRenderWindow());
 
         pacLady.dibujar(window.getRenderWindow());
         fantasma1.dibujar(window.getRenderWindow()); 
