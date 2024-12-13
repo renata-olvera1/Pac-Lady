@@ -6,11 +6,6 @@
 #include <vector>
 #include <algorithm>
 #include "Fantasma.hpp"
-#include <SFML/Graphics.hpp>
-#include <iostream>
-
-using namespace sf; 
-using namespace std;
 
 int main() {
 
@@ -28,10 +23,10 @@ int main() {
     mapa.centrarEnVentana(window.getSize());
 
     // Crear fantasmas 
-    Fantasma fantasma1("assets/images/NieveFresa.png", 500, 500, 0.2f); 
+    Fantasma fantasma1("assets/images/NieveFresa.png", 100, 100, 0.2f); 
     Fantasma fantasma2("assets/images/NieveVainilla.png", 200, 200, 0.2f);
-    Fantasma fantasma3("assets/images/NievePistache.png", 200,200,0.2f);
-    Fantasma fantasma4("assets/images/NiveChocolate.png", 500, 200,0.2f);
+    Fantasma fantasma3("assets/images/NieveChocolate.png", 200, 200, 0.2f);
+    Fantasma fantasma4("assets/images/NievePistache.png", 200, 200, 0.2f);
 
     // Crear el puntaje con un valor inicial de 0
     Puntaje puntaje("assets/fonts/CrackMan.ttf", "assets/images/Puntaje.png");
@@ -216,34 +211,7 @@ int main() {
         if (Keyboard::isKeyPressed(Keyboard::Right)) {
             pacLady.mover(Keyboard::Right, .045f);
         }
-        // Actualizar la posición de Pac-Lady y verificar colisiones 
-        updatePacLady(pacLady, mapaImagen);
 
-        // Movimiento automático de los fantasmas 
-        fantasma1.moverAuto(mapaImagen, ventana.getSize().x, ventana.getSize().y); 
-        fantasma2.moverAuto(mapaImagen, ventana.getSize().x, ventana.getSize().y);
-        // Verificar colisiones con la línea marrón para los fantasmas 
-        if (fantasma1.verificarColision(mapaImagen)) { 
-            cout << "Colisión con la línea marrón detectada para fantasma 1!" << endl; 
-        } 
-        if (fantasma2.verificarColision(mapaImagen)) { 
-            cout << "Colisión con la línea marrón detectada para fantasma 2!" << endl; 
-            }
-        
-        // Dibujar todo 
-        ventana.clear(); 
-        ventana.draw(spriteMapa); 
-        
-        // Dibujar líneas de puntos 
-        for (auto &punto : Linea_A) { 
-        punto.dibujar(ventana);
-         } 
-        // Aquí se repite para todas las líneas de puntos... 
-        pacLady.dibujar(ventana); 
-        fantasma1.dibujar(ventana); 
-        fantasma2.dibujar(ventana); 
-        ventana.display(); }
-        
         // Movimiento automático de los fantasmas 
         fantasma1.moverAuto(window.getSize().x, window.getSize().y); 
         fantasma2.moverAuto(window.getSize().x, window.getSize().y);
