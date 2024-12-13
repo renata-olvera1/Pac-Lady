@@ -1,12 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "CollisionMapa.hpp"
 using namespace std;
 using namespace sf;
 
 class PacLady {
 public:
-    PacLady(const string& rutaImagen, float origenX, float origenY, float velocidad = .5f) : velocidad(velocidad) {
+    PacLady(const string& rutaImagen, float x, float y, float velocidad = .5f) : velocidad(velocidad) {
         if (!textura.loadFromFile(rutaImagen)) {
             throw runtime_error("No se pudo cargar la imagen de PacLady.");
         }
@@ -33,9 +32,7 @@ public:
             nuevaPosicion.x += velocidad;
         }
 
-        if (!checkCollision(nuevaPosicion.x, nuevaPosicion.y)) {
-            sprite.move(movimiento);
-        }
+        sprite.move(movimiento);
     }
 
     void dibujar(RenderWindow& ventana) {
@@ -52,16 +49,9 @@ public:
     }
 
 private:
-    bool checkCollision(float x, float y) {
-        int gridX = static_cast<int>(x / TILE_SIZE);
-        int gridY = static_cast<int>(y / TILE_SIZE);
-        return collisionMap[gridY][gridX] == 1;
-    }
 
     Texture textura;
     Sprite sprite;
     float velocidad;
-    float origenX = 275;
-    float origenY = 609;
-    float x, y;
+    float origenX = 275, origenY = 609;
 };

@@ -369,8 +369,8 @@ int main() {
             punto.dibujar(window.getRenderWindow());
         }
 
-        // Dibujar el puntaje
-        puntaje.dibujar(window.getRenderWindow());
+        // Dibujar a PacLady
+        pacLady.dibujar(window.getRenderWindow());
 
         pacLady.dibujar(window.getRenderWindow());
         fantasma1.dibujar(window.getRenderWindow()); 

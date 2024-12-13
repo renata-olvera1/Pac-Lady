@@ -18,6 +18,7 @@ public:
             corazon.setTexture(texturaCorazon);
             corazon.setPosition(calcularPosicionCorazon(xCorazon, i), yCorazon);
             corazones.push_back(corazon);
+            corazon.setScale(0.03f, 0.03f);
         }
     }
 
