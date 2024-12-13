@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "CollisionMapa.hpp"
 using namespace std;
 using namespace sf;
 
@@ -44,11 +43,15 @@ public:
             nuevaPosicion.x += velocidad;
         }
 
+<<<<<<< HEAD
         // Verificar colisión antes de mover
         if (!checkCollision(nuevaPosicion.x, nuevaPosicion.y))
         {
             sprite.move(movimiento);
         }
+=======
+        sprite.move(movimiento);
+>>>>>>> 0e858438ddaf1efa416e89bedfe3dcbddfe17865
     }
 
     void dibujar(RenderWindow &ventana)
@@ -62,6 +65,7 @@ public:
         return Vector2f(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
     }
 
+<<<<<<< HEAD
     // Método para establecer el mapa de colisiones (imagen de mapa)
     void setCollisionMap(const Image &mapaColisiones)
     {
@@ -86,10 +90,21 @@ private:
 
         // Verificar si el color es el color de la pared (color café oscuro)
         return pixelColor == Color(101, 67, 33); // Compara con el color de las paredes
+=======
+    void resetPosition() {
+        sprite.setPosition(origenX, origenY);
+>>>>>>> 0e858438ddaf1efa416e89bedfe3dcbddfe17865
     }
+
+private:
 
     Texture textura;
     Sprite sprite;
     float velocidad;
+<<<<<<< HEAD
     Image mapaColisiones; // Variable para almacenar el mapa de colisiones
 };
+=======
+    float origenX = 275, origenY = 609;
+};
+>>>>>>> 0e858438ddaf1efa416e89bedfe3dcbddfe17865

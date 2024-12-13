@@ -8,11 +8,16 @@ using namespace std;
 class Vida
 {
 public:
+<<<<<<< HEAD
     Vida(const string &rutaCorazon, float xCorazon, float yCorazon, int numCorazones)
     {
 
         if (!texturaCorazon.loadFromFile(rutaCorazon))
         {
+=======
+    Vida(const string &rutaCorazon, float xCorazon, float yCorazon, int numCorazones, float escala = 0.03f) {
+        if (!texturaCorazon.loadFromFile(rutaCorazon)) {
+>>>>>>> 0e858438ddaf1efa416e89bedfe3dcbddfe17865
             cout << "Error: No se pudo cargar la imagen del corazón." << endl;
         }
 
@@ -20,7 +25,8 @@ public:
         {
             Sprite corazon;
             corazon.setTexture(texturaCorazon);
-            corazon.setPosition(calcularPosicionCorazon(xCorazon, i), yCorazon);
+            corazon.setScale(escala, escala); // Ajustar la escala del corazón
+            corazon.setPosition(calcularPosicionCorazon(xCorazon, i, escala), yCorazon);
             corazones.push_back(corazon);
         }
     }
@@ -47,12 +53,16 @@ public:
     }
 
 private:
+<<<<<<< HEAD
     float calcularPosicionCorazon(float xInicial, int indice) const
     {
         return xInicial + indice * (texturaCorazon.getSize().x + 10); // Ajusta el espacio entre corazones
+=======
+    float calcularPosicionCorazon(float xInicial, int indice, float escala) const {
+        return xInicial + indice * (texturaCorazon.getSize().x * escala + 10); // Ajusta el espacio entre corazones
+>>>>>>> 0e858438ddaf1efa416e89bedfe3dcbddfe17865
     }
 
     Texture texturaCorazon;
-    Sprite spriteMarco;
     vector<Sprite> corazones;
 };
