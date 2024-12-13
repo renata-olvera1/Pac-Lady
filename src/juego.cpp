@@ -45,7 +45,7 @@ int main() {
     // Puntos Linea A
     vector<Punto> Linea_A = {
         Punto(545, 798, 4), Punto(575, 798, 4), Punto(605, 798, 4), 
-        Punto (630, 798, 4), Punto(485, 798, 4), Punto(455, 798, 4),
+        Punto(630, 798, 4), Punto(485, 798, 4), Punto(455, 798, 4),
         Punto(425, 798, 4), Punto(395, 798, 4)
     };
 

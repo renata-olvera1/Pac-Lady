@@ -16,7 +16,7 @@ public:
         }
         sprite.setTexture(textura);
         sprite.setPosition(x, y);
-        sprite.setScale(0.2f, 0.2f); // Escalar la imagen para ajustarla
+        sprite.setScale(0.05f, 0.05f); // Escalar la imagen para ajustarla
     }
 
     // Movimiento automático (patrón simple de movimiento)
