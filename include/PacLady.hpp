@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "CollisionMap.hpp"
+#include "CollisionMapa.hpp"
 using namespace std;
 using namespace sf;
 
